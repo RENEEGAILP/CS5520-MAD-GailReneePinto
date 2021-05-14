@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">NUMAD21Su-GailReneePinto</string>
+    <string name="about_string">About</string>
+    <string name="about_detail">Name: Gail Renee Pinto\nEmail: pinto.ga@northeastern.edu</string>
 </resources>

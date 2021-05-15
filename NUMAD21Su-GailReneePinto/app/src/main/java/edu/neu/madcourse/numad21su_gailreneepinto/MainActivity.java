@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         TextView about = (TextView)findViewById(R.id.about_textView);
         if(about.getVisibility() == View.INVISIBLE) {
             about.setVisibility(View.VISIBLE);
-            about.postDelayed(() -> about.setVisibility(View.INVISIBLE), 6000);
+            about.postDelayed(() -> about.setVisibility(View.INVISIBLE), 15000);
         }
     }
 }

@@ -2,10 +2,11 @@ package edu.neu.madcourse.numad21su_gailreneepinto;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -15,11 +16,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void onAboutClick(View view) {
-        TextView about = (TextView)findViewById(R.id.about_textView);
-        if(about.getVisibility() == View.INVISIBLE) {
-            about.setVisibility(View.VISIBLE);
-            about.postDelayed(() -> about.setVisibility(View.INVISIBLE), 15000);
+    public void onClick(View view) {
+
+        switch (view.getId())
+        {
+            case R.id.about_button:
+                TextView about = findViewById(R.id.about_textView);
+                if(about.getVisibility() == View.INVISIBLE) {
+                    about.setVisibility(View.VISIBLE);
+                    about.postDelayed(() -> about.setVisibility(View.INVISIBLE), 15000);
+                }
+                break;
+            case R.id.clickhere_button:
+                Intent intent = new Intent(this, ClickyClickyActivity.class);
+                startActivity(intent);
         }
     }
 }

@@ -2,7 +2,6 @@ package edu.neu.madcourse.numad21su_gailreneepinto;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -28,8 +27,13 @@ public class MainActivity extends AppCompatActivity {
                 }
                 break;
             case R.id.clickhere_button:
-                Intent intent = new Intent(this, ClickyClickyActivity.class);
+                Intent ClickyClick_intent = new Intent(this, ClickyClickyActivity.class);
+                startActivity(ClickyClick_intent);
+                break;
+            case R.id.linkcollector_button:
+                Intent intent = new Intent(this,LinkCollectorActivity.class);
                 startActivity(intent);
+                break;
         }
     }
 }

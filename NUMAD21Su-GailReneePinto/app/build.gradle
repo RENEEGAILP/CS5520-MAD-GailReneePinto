@@ -5,13 +5,13 @@ plugins {
 android {
     signingConfigs {
         debug {
-            storeFile file('D:\\MS-Northeastern\\Summer21\\CS5520\\Assignments\\Assignment_1\\CS5520-MAD-GailReneePinto\\NUMAD21Su-GailReneePinto\\release_key.jks')
+            storeFile file('..\\release_key.jks')
             storePassword 'password'
             keyAlias 'key0'
             keyPassword 'password'
         }
         release {
-        storeFile file('D:\\MS-Northeastern\\Summer21\\CS5520\\Assignments\\Assignment_1\\CS5520-MAD-GailReneePinto\\NUMAD21Su-GailReneePinto\\release_key.jks')
+        storeFile file('D:\\MS-Northeastern\\Summer21\\CS5520\\Assignments\\Assignment\\CS5520-MAD-GailReneePinto\\NUMAD21Su-GailReneePinto\\release_key.jks')
             storePassword 'password'
             keyAlias 'key0'
             keyPassword 'password'

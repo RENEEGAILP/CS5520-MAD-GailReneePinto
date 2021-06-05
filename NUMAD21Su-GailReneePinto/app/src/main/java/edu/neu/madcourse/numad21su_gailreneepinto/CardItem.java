@@ -1,19 +1,28 @@
 package edu.neu.madcourse.numad21su_gailreneepinto;
 
-public class CardItem {
-    private final String itemName;
-    private final String itemDesc;
+import android.content.Intent;
+import android.net.Uri;
 
-    public CardItem(String itemName, String itemDesc) {
-        this.itemName = itemName;
-        this.itemDesc = itemDesc;
+public class CardItem implements ItemClickListener{
+    private final String mLinkName;
+    private final String mLinkURL;
+
+    public CardItem(String mLinkName, String mLinkURL) {
+        this.mLinkName = mLinkName;
+        this.mLinkURL = mLinkURL;
     }
 
-    public String getItemDesc() {
-        return itemDesc;
+    public String getLinkURL() {
+        return mLinkURL;
     }
 
-    public String getItemName() {
-        return itemName;
+    public String getLinkName() {
+        return mLinkName;
+    }
+
+    @Override
+    public void onItemClick(int position) {
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(mLinkURL));
+        //context.startActivity(browserIntent);
     }
 }

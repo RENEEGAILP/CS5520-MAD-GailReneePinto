@@ -9,11 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_grp_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.NUMAD21SuGailReneePinto">
-        <activity android:name=".LinkCollectorActivity"></activity>
+        <activity
+            android:name=".LinkCollectorActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"></activity>
         <activity
             android:name=".ClickyClickyActivity"
             android:configChanges="keyboardHidden|orientation|screenSize" />
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

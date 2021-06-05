@@ -83,7 +83,7 @@ public class LinkCollectorActivity extends AppCompatActivity {
                                 mRecyclerViewAdapter.notifyItemInserted( 0 );
                                 Snackbar.make( mRecyclerView, "Link added", Snackbar.LENGTH_LONG ).show();
                             } else {
-                                Snackbar.make( mRecyclerView, "Link not added", Snackbar.LENGTH_LONG ).show();
+                                Snackbar.make( mRecyclerView, "Link not added.\nPlease enter a valid URL(http://www.abc.com)", Snackbar.LENGTH_LONG ).show();
                             }
                         } )
                 .setNegativeButton( getString( R.string.cancel ),
@@ -106,12 +106,6 @@ public class LinkCollectorActivity extends AppCompatActivity {
         }
     }
 
-    private void onInsertButtonClick(View view) {
-        int position = 0;
-        mItemList.add( position, new CardItem( "Name1", "desc1" ) );
-        mRecyclerViewAdapter.notifyItemInserted( position );
-    }
-
     private void buildRecyclerView() {
         mRecyclerView = findViewById( R.id.recyclerView );
         mRecyclerView.setHasFixedSize( true );
@@ -127,5 +121,24 @@ public class LinkCollectorActivity extends AppCompatActivity {
         mLinkURLEditTextView.requestFocus();
         mLinkURLEditTextView.getText().clear();
         mInsertLinkDialog.show();
+    }
+
+    // Handling Orientation Changes on Android
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+
+
+        int size = mItemList == null ? 0 : mItemList.size();
+        outState.putInt(NUMBER_OF_ITEMS, size);
+
+        // Need to generate unique key for each item
+        // This is only a possible way to do, please find your own way to generate the key
+        for (int i = 0; i < size; i++) {
+            outState.putString(KEY_OF_INSTANCE + i + "0", mItemList.get(i).getLinkName());
+            // put itemDesc information into instance
+            outState.putString(KEY_OF_INSTANCE + i + "1", mItemList.get(i).getLinkURL());
+        }
+        super.onSaveInstanceState(outState);
+
     }
 }

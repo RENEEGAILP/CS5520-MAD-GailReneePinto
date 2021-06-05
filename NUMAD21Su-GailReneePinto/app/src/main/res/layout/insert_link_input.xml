@@ -6,37 +6,37 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/enter_link_details"
+        android:id="@+id/new_link_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enter Details"
-        app:layout_constraintStart_toStartOf="parent"
+        android:text="Enter a new Link"
+        app:layout_constraintBottom_toTopOf="@id/link_name_input"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/link_name_input" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <TextView
-        android:id="@+id/enter_link_name"
+        android:id="@+id/link_name_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:text="fff"
-        app:layout_constraintHorizontal_weight="1"
+        android:text="Enter name"
         app:layout_constraintBottom_toTopOf="@+id/link_name_input"
         app:layout_constraintEnd_toStartOf="@id/link_name_input"
+        app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/link_name_input" />
 
     <TextView
-        android:id="@+id/enter_link_url"
+        android:id="@+id/link_URL"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:text="ccc"
-        app:layout_constraintHorizontal_weight="1"
+        android:text="Enter URL"
         app:layout_constraintBottom_toTopOf="@+id/link_url_input"
         app:layout_constraintEnd_toStartOf="@id/link_url_input"
+        app:layout_constraintHorizontal_weight="1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/link_url_input" />
 
@@ -47,11 +47,11 @@
         android:layout_marginEnd="10dp"
         android:inputType="text"
         android:nextFocusDown="@id/link_url_input"
-        app:layout_constraintHorizontal_weight="5"
         app:layout_constraintBottom_toTopOf="@id/link_url_input"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/enter_link_name"
-        app:layout_constraintTop_toBottomOf="@id/enter_link_details" />
+        app:layout_constraintHorizontal_weight="5"
+        app:layout_constraintStart_toEndOf="@id/link_name_text"
+        app:layout_constraintTop_toBottomOf="@id/new_link_text" />
 
     <EditText
         android:id="@+id/link_url_input"
@@ -62,7 +62,7 @@
         android:inputType="textUri"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/enter_link_url"
+        app:layout_constraintStart_toEndOf="@id/link_URL"
         app:layout_constraintTop_toBottomOf="@id/link_name_input" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

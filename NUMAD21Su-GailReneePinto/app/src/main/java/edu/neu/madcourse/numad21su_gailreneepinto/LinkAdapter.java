@@ -10,24 +10,29 @@ import java.util.ArrayList;
 
 public class LinkAdapter extends RecyclerView.Adapter<LinkViewHolder> {
 
-    private ArrayList<CardItem> itemList;
+    private ArrayList<CardItem> mItemList;
+    private ItemClickListener mListener;
 
     public LinkAdapter() {
-        this.itemList = new ArrayList<CardItem>();
+        this.mItemList = new ArrayList<CardItem>();
     }
     public LinkAdapter(ArrayList<CardItem> itemList) {
-
-        this.itemList = itemList;
+        this.mItemList = itemList;
     }
+
+    public void setOnLinkClickListener(ItemClickListener listener) {
+        this.mListener = listener;
+    }
+
     @Override
     public LinkViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.link_cardview, parent, false);
-        return new LinkViewHolder(view);
+        return new LinkViewHolder(view, mListener );
     }
 
     @Override
     public void onBindViewHolder(LinkViewHolder holder, int position) {
-        CardItem currentItem = itemList.get(position);
+        CardItem currentItem = mItemList.get(position);
 
         holder.mLinkName.setText(currentItem.getLinkName());
         holder.mLinkURL.setText(currentItem.getLinkURL());
@@ -35,7 +40,7 @@ public class LinkAdapter extends RecyclerView.Adapter<LinkViewHolder> {
 
     @Override
     public int getItemCount() {
-        return itemList.size();
+        return mItemList.size();
     }
 
 

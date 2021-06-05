@@ -10,9 +10,16 @@ public class LinkViewHolder extends RecyclerView.ViewHolder{
     public TextView mLinkURL;
 
 
-    public LinkViewHolder(View itemView) {
+    public LinkViewHolder(View itemView, final ItemClickListener listener) {
         super(itemView);
         mLinkName = itemView.findViewById(R.id.link_name_text_view);
         mLinkURL = itemView.findViewById(R.id.link_url_text_view);
+
+        itemView.setOnClickListener( v -> {
+            int position = getLayoutPosition();
+            if (position != RecyclerView.NO_POSITION){
+                listener.onItemClick(position);
+            }
+        });
     }
 }

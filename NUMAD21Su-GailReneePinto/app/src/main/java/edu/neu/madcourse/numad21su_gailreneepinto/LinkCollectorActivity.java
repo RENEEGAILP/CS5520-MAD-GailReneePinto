@@ -55,6 +55,7 @@ public class LinkCollectorActivity extends AppCompatActivity {
                 int position = viewHolder.getLayoutPosition();
                 mItemList.remove( position );
                 mRecyclerViewAdapter.notifyItemRemoved( position );
+                Snackbar.make( mRecyclerView, "Link removed", Snackbar.LENGTH_LONG ).show();
             }
         } );
         itemTouchHelper.attachToRecyclerView( mRecyclerView );

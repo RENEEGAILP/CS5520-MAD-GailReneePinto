@@ -55,6 +55,7 @@ public class LinkCollectorActivity extends AppCompatActivity {
                 int position = viewHolder.getLayoutPosition();
                 mItemList.remove( position );
                 mRecyclerViewAdapter.notifyItemRemoved( position );
+                Snackbar.make( mRecyclerView, "Link removed", Snackbar.LENGTH_LONG ).show();
             }
         } );
         itemTouchHelper.attachToRecyclerView( mRecyclerView );
@@ -76,14 +77,21 @@ public class LinkCollectorActivity extends AppCompatActivity {
                 .setCancelable( false )
                 .setPositiveButton( getString( R.string.insert ),
                         (dialog, id) -> {
-                            CardItem linkCard = new CardItem( mLinkNameEditTextView.getText().toString(),
-                                    mLinkURLEditTextView.getText().toString() );
-                            if (linkCard.checkValidity()) {
-                                mItemList.add( 0, linkCard );
-                                mRecyclerViewAdapter.notifyItemInserted( 0 );
-                                Snackbar.make( mRecyclerView, "Link added", Snackbar.LENGTH_LONG ).show();
-                            } else {
-                                Snackbar.make( mRecyclerView, "Link not added.\nPlease enter a valid URL(http://www.abc.com)", Snackbar.LENGTH_LONG ).show();
+                            String linkName = mLinkNameEditTextView.getText().toString();
+                            String linkURL = mLinkURLEditTextView.getText().toString();
+                            if(linkName.isEmpty()) {
+                                Snackbar.make( mRecyclerView, "Link not added.\nPlease enter a name", Snackbar.LENGTH_LONG ).show();
+                            }
+                            else
+                            {
+                                CardItem linkCard = new CardItem(linkName,linkURL);
+                                if (linkCard.checkValidity()) {
+                                    mItemList.add( 0, linkCard );
+                                    mRecyclerViewAdapter.notifyItemInserted( 0 );
+                                    Snackbar.make( mRecyclerView, "Link added", Snackbar.LENGTH_LONG ).show();
+                                } else {
+                                    Snackbar.make( mRecyclerView, "Link not added.\nPlease enter a valid URL(http://www.abc.com)", Snackbar.LENGTH_LONG ).show();
+                                }
                             }
                         } )
                 .setNegativeButton( getString( R.string.cancel ),
@@ -118,8 +126,8 @@ public class LinkCollectorActivity extends AppCompatActivity {
 
     public void insertLink() {
         mLinkNameEditTextView.getText().clear();
-        mLinkURLEditTextView.requestFocus();
         mLinkURLEditTextView.getText().clear();
+        mLinkNameEditTextView.requestFocus();
         mInsertLinkDialog.show();
     }
 

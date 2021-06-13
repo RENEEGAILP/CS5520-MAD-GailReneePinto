@@ -20,6 +20,7 @@ public class LocateMeActivity extends AppCompatActivity implements LocationListe
 
     public TextView mLatitude;
     public TextView mLongitude;
+    public TextView mLocationError;
     private LocationManager locationManager;
 
     @Override
@@ -28,6 +29,10 @@ public class LocateMeActivity extends AppCompatActivity implements LocationListe
         setContentView( R.layout.activity_locate_me );
         mLatitude = findViewById( R.id.latitude_textview );
         mLongitude = findViewById( R.id.longitude_textview );
+        mLocationError = findViewById( R.id.location_denied_textview );
+        mLatitude.setVisibility( View.INVISIBLE );
+        mLongitude.setVisibility( View.INVISIBLE );
+        mLocationError.setVisibility( View.INVISIBLE );
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
@@ -50,16 +55,18 @@ public class LocateMeActivity extends AppCompatActivity implements LocationListe
                 if (grantResults.length>0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
                     if (ContextCompat.checkSelfPermission(LocateMeActivity.this,
                             Manifest.permission.ACCESS_FINE_LOCATION)==PackageManager.PERMISSION_GRANTED){
-                        Toast.makeText(this, "Permission Granted", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(this, "Permission Granted", Toast.LENGTH_SHORT).show();
                         initLocation();
                     }
                 }else{
-                    Toast.makeText(this, "Permission Denied", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(this, "Permission Denied", Toast.LENGTH_SHORT).show();
+                    permissionDenied();
                 }
                 return;
             }
             default:
                 //TODO : Add error message
+                permissionDenied();
                 break;
         }
     }
@@ -68,7 +75,7 @@ public class LocateMeActivity extends AppCompatActivity implements LocationListe
     {
         mLatitude.setVisibility( View.INVISIBLE );
         mLongitude.setVisibility( View.INVISIBLE );
-
+        mLocationError.setVisibility( View.VISIBLE );
     }
     private void initLocation() {
         try {

@@ -12,6 +12,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -63,6 +64,12 @@ public class LocateMeActivity extends AppCompatActivity implements LocationListe
         }
     }
 
+    private void permissionDenied()
+    {
+        mLatitude.setVisibility( View.INVISIBLE );
+        mLongitude.setVisibility( View.INVISIBLE );
+
+    }
     private void initLocation() {
         try {
             Criteria criteria = new Criteria();
@@ -79,15 +86,7 @@ public class LocateMeActivity extends AppCompatActivity implements LocationListe
     public void onLocationChanged(@NonNull Location location) {
         mLatitude.setText( "Latitude : " + String.valueOf(location.getLatitude()) );
         mLongitude.setText("Longitude : " + String.valueOf(location.getLongitude()) );
+        mLatitude.setVisibility( View.VISIBLE );
+        mLongitude.setVisibility( View.VISIBLE );
     }
-
-    /*@Override
-    /public void onProviderEnabled(@NonNull String provider) {
-
-    }
-
-    @Override
-    public void onProviderDisabled(@NonNull String provider) {
-
-    }*/
 }

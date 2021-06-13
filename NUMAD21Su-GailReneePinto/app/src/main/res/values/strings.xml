@@ -13,4 +13,5 @@
     <string name="insert">Insert</string>
     <string name="cancel">Cancel</string>
     <string name="locate_me">Locate Me!</string>
+    <string name="location">Location</string>
 </resources>

@@ -10,7 +10,10 @@
         android:roundIcon="@mipmap/ic_launcher_grp_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.NUMAD21SuGailReneePinto">
-        <activity android:name=".LocateMeActivity"></activity>
+        <activity
+            android:name=".LocateMeActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            ></activity>
         <activity
             android:name=".LinkCollectorActivity"
             android:configChanges="keyboardHidden|orientation|screenSize" />

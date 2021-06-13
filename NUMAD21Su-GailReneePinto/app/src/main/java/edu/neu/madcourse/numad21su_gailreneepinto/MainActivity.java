@@ -31,8 +31,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(ClickyClick_intent);
                 break;
             case R.id.linkcollector_button:
-                Intent intent = new Intent(this,LinkCollectorActivity.class);
-                startActivity(intent);
+                Intent linkCollector_intent = new Intent(this,LinkCollectorActivity.class);
+                startActivity(linkCollector_intent);
+                break;
+            case R.id.locateme_button:
+                Intent locateme_intent = new Intent(this,LocateMeActivity.class);
+                startActivity(locateme_intent);
                 break;
         }
     }

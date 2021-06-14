@@ -21,7 +21,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:text="Enter name"
+        android:text="Name"
         app:layout_constraintBottom_toTopOf="@+id/link_name_input"
         app:layout_constraintEnd_toStartOf="@id/link_name_input"
         app:layout_constraintHorizontal_weight="1"
@@ -33,7 +33,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:text="Enter URL"
+        android:text="URL"
         app:layout_constraintBottom_toTopOf="@+id/link_url_input"
         app:layout_constraintEnd_toStartOf="@id/link_url_input"
         app:layout_constraintHorizontal_weight="1"
@@ -51,7 +51,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_weight="5"
         app:layout_constraintStart_toEndOf="@id/link_name_text"
-        app:layout_constraintTop_toBottomOf="@id/new_link_text" />
+        app:layout_constraintTop_toBottomOf="@id/new_link_text"
+        android:focusable="true"
+    />
 
     <EditText
         android:id="@+id/link_url_input"

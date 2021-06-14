@@ -10,11 +10,11 @@
         android:id="@+id/latitude_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/location_textview"
+        app:layout_constraintBottom_toTopOf="@id/longitude_textview"
         tools:visibility="invisible" />
 
     <TextView
@@ -27,13 +27,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/latitude_textview"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.45"
         tools:visibility="invisible" />
 
     <TextView
         android:id="@+id/location_textview"
         android:layout_width="wrap_content"
+        android:padding="10dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:fontFamily="cursive"
@@ -43,12 +44,10 @@
         android:textSize="48sp"
         android:textStyle="bold"
         android:typeface="normal"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.066" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/location_denied_textview"

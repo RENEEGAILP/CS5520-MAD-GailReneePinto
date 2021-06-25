@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -49,11 +50,16 @@ public class WebServiceActivity extends AppCompatActivity {
 
         @Override
        protected Bitmap doInBackground(Void... voids) {
-            String url = "https://http.cat/100.jpg";
+            String url = "https://http.cat/";
+            String lHTTPStatusCode = HTTPStatusCodeEditText.getText().toString();
+            if(lHTTPStatusCode.isEmpty())
+            {
+                lHTTPStatusCode = "404";
+            }
             Bitmap bitmap = null;
             try {
-                URL currentWeatherURL =new URL(url);
-                HttpURLConnection conn = (HttpURLConnection) currentWeatherURL.openConnection();
+                URL httpStatusURL =new URL(url+ lHTTPStatusCode +".jpg");
+                HttpURLConnection conn = (HttpURLConnection) httpStatusURL.openConnection();
                 conn.setRequestMethod("GET");
                 conn.setConnectTimeout(5000);
                 conn.setDoInput(true);

@@ -2,12 +2,10 @@ package edu.neu.madcourse.numad21su_gailreneepinto;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -50,6 +48,7 @@ public class WebServiceActivity extends AppCompatActivity {
         protected void onPreExecute() {
             super.onPreExecute();
             progressBar.setVisibility(View.VISIBLE);
+            HTTPResponseImageView.setVisibility( View.INVISIBLE );
         }
 
         @Override
@@ -86,6 +85,7 @@ public class WebServiceActivity extends AppCompatActivity {
             super.onPostExecute( result );
             progressBar.setVisibility( View.INVISIBLE );
             HTTPResponseImageView.setImageBitmap( result );
+            HTTPResponseImageView.setVisibility( View.VISIBLE );
         }
     }
 

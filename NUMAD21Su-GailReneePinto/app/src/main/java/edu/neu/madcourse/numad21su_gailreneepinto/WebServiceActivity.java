@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -25,6 +26,7 @@ public class WebServiceActivity extends AppCompatActivity {
     ImageView HTTPResponseImageView;
     Button loadDataButton;
     EditText HTTPStatusCodeEditText;
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,7 @@ public class WebServiceActivity extends AppCompatActivity {
         loadDataButton = findViewById( R.id.HTTP_status_load_image_button );
         HTTPStatusCodeEditText = findViewById( R.id.HTTP_status_code_input_editText );
         loadDataButton.setOnClickListener( this::onLoadDataButtonClick );
+        progressBar = findViewById( R.id.progressBar2 );
     }
 
     public void onLoadDataButtonClick(View view)
@@ -46,6 +49,7 @@ public class WebServiceActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
+            progressBar.setVisibility(View.VISIBLE);
         }
 
         @Override
@@ -80,6 +84,7 @@ public class WebServiceActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Bitmap result) {
             super.onPostExecute( result );
+            progressBar.setVisibility( View.INVISIBLE );
             HTTPResponseImageView.setImageBitmap( result );
         }
     }

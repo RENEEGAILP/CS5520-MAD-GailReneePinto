@@ -38,6 +38,10 @@ public class MainActivity extends AppCompatActivity {
                 Intent locateme_intent = new Intent(this,LocateMeActivity.class);
                 startActivity(locateme_intent);
                 break;
+            case R.id.webservice_button:
+                Intent webservice_intent = new Intent(this,WebServiceActivity.class);
+                startActivity(webservice_intent);
+                break;
         }
     }
 }

@@ -15,4 +15,5 @@
     <string name="locate_me">Locate Me!</string>
     <string name="location">Location</string>
     <string name="location_permission_error_string">Your app requires permission to show location!</string>
+    <string name="at_your_service_string">At your service</string>
 </resources>

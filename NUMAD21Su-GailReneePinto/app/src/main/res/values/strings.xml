@@ -15,4 +15,8 @@
     <string name="locate_me">Locate Me!</string>
     <string name="location">Location</string>
     <string name="location_permission_error_string">Your app requires permission to show location!</string>
+    <string name="at_your_service_string">At your service</string>
+    <string name="HTTP_Status_code_message">Enter an HTTP status code</string>
+    <string name="load_image_button_text">Load Image</string>
+    <string name="HTTP_image_content_descriptor">Cat image for HTTP status code</string>
 </resources>

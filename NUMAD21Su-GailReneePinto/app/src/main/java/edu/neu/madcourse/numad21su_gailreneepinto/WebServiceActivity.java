@@ -12,6 +12,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -68,6 +70,16 @@ public class WebServiceActivity extends AppCompatActivity {
                 conn.setDoInput(true);
                 conn.connect();
 
+                if(conn.getResponseCode() == HttpURLConnection.HTTP_CLIENT_TIMEOUT ||
+                        conn.getResponseCode() == HttpURLConnection.HTTP_GATEWAY_TIMEOUT) {
+                    Snackbar.make( findViewById(R.id.layout), "Could not retrieve image. Please try again later", Snackbar.LENGTH_LONG ).show();
+                    return bitmap;
+                }
+                if(conn.getResponseCode() != HttpURLConnection.HTTP_OK)
+                {
+                    Snackbar.make( findViewById(R.id.layout), "Please enter a valid HTTP code", Snackbar.LENGTH_LONG ).show();
+                    return bitmap;
+                }
                 InputStream inputStream = conn.getInputStream();
                 bitmap = BitmapFactory.decodeStream(inputStream);
             } catch (ProtocolException e) {

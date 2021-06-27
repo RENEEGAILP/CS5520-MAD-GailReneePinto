@@ -57,29 +57,17 @@ public class WebServiceActivity extends AppCompatActivity {
        protected Bitmap doInBackground(Void... voids) {
             String url = "https://http.cat/";
             String lHTTPStatusCode = HTTPStatusCodeEditText.getText().toString();
-            if(lHTTPStatusCode.isEmpty())
-            {
-                lHTTPStatusCode = "404";
-            }
+
             Bitmap bitmap = null;
             try {
                 URL httpStatusURL =new URL(url+ lHTTPStatusCode +".jpg");
                 HttpURLConnection conn = (HttpURLConnection) httpStatusURL.openConnection();
                 conn.setRequestMethod("GET");
-                conn.setConnectTimeout(5000);
+                conn.setConnectTimeout(10000);
+                conn.setReadTimeout(10000);
                 conn.setDoInput(true);
                 conn.connect();
 
-                if(conn.getResponseCode() == HttpURLConnection.HTTP_CLIENT_TIMEOUT ||
-                        conn.getResponseCode() == HttpURLConnection.HTTP_GATEWAY_TIMEOUT) {
-                    Snackbar.make( findViewById(R.id.layout), "Could not retrieve image. Please try again later", Snackbar.LENGTH_LONG ).show();
-                    return bitmap;
-                }
-                if(conn.getResponseCode() != HttpURLConnection.HTTP_OK)
-                {
-                    Snackbar.make( findViewById(R.id.layout), "Please enter a valid HTTP code", Snackbar.LENGTH_LONG ).show();
-                    return bitmap;
-                }
                 InputStream inputStream = conn.getInputStream();
                 bitmap = BitmapFactory.decodeStream(inputStream);
             } catch (ProtocolException e) {
@@ -97,6 +85,10 @@ public class WebServiceActivity extends AppCompatActivity {
             super.onPostExecute( result );
             progressBar.setVisibility( View.INVISIBLE );
             HTTPResponseImageView.setImageBitmap( result );
+            if( result == null )
+            {
+                Snackbar.make( findViewById(R.id.layout), "Could not retrieve image. Please try again later", Snackbar.LENGTH_LONG ).show();
+            }
             HTTPResponseImageView.setVisibility( View.VISIBLE );
         }
     }
